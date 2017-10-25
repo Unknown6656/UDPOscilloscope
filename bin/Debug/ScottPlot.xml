@@ -1,0 +1,226 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ScottPlot</name>
+    </assembly>
+    <members>
+        <member name="T:ScottPlot.Axis">
+            <summary>
+            tools to work with data axes
+            </summary>
+        </member>
+        <member name="M:ScottPlot.Axis.Info">
+            <summary>
+            display information about the axis, figure, pixel/unit mesh, etc.
+            </summary>
+        </member>
+        <member name="M:ScottPlot.Axis.Init(System.Int32,System.Int32)">
+            <summary>
+            prepare the axis class for a certain size of data
+            </summary>
+        </member>
+        <member name="M:ScottPlot.Axis.CalculateMesh">
+            <summary>
+            re-calculate pixel-to-unit and unit-to-pixel values from the given size and axis
+            </summary>
+        </member>
+        <member name="M:ScottPlot.Axis.Auto(System.Double[],System.Double[],System.Double,System.Double,System.Boolean)">
+            <summary>
+            Given Xs and Ys, adjust the axis boundaries to fit the data (with optional padding)
+            </summary>
+        </member>
+        <member name="M:ScottPlot.Axis.PaddedLimit(System.Double[],System.Double)">
+            <summary>
+            Given an array, return [min, max] with optional fractional padding.
+            This is intended to be used when calculating magins with Auto().
+            </summary>
+        </member>
+        <member name="M:ScottPlot.Axis.TickGen(System.Double,System.Double,System.Int32,System.Int32)">
+            <summary>
+            return an array of good tick values for an axis given a range
+            </summary>
+        </member>
+        <member name="M:ScottPlot.Axis.RoundNumberNear(System.Double)">
+            <summary>
+            given an arbitrary number, return the nearerest round number
+            (i.e., 1000, 500, 100, 50, 10, 5, 1, .5, .1, .05, .01)
+            </summary>
+        </member>
+        <member name="M:ScottPlot.Axis.TickString(System.Double,System.Double)">
+            <summary>
+            format a number for a tick label by limiting its precision
+            </summary>
+        </member>
+        <member name="M:ScottPlot.Axis.PixelPoints(System.Double[],System.Double[])">
+            <summary>
+            given Xs and Ys, use the axis information to return a list of points to be plotted.
+            </summary>
+        </member>
+        <member name="T:ScottPlot.Draw">
+            <summary>
+            Everything related to drawing on bitmaps. 
+            Data, axis, and figure labels.
+            Fonts, pens, colors, and all that.
+            </summary>
+        </member>
+        <member name="M:ScottPlot.Draw.Render">
+            <summary>
+            combine the axis bitmap with the data bitmap
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ScottPlot.Draw.Init(System.Int32,System.Int32)">
+            <summary>
+            re-create the figure from scratch.
+            re-create bitmap buffers (with new size).
+            re-draw axis.
+            clear data.
+            </summary>
+        </member>
+        <member name="M:ScottPlot.Draw.InitAxis">
+            <summary>
+            Draw a blank figure with an axis and labels.
+            This stock figure will be reused (untlil a resize event), where the
+            data graph will be pasted over this figure upon each render event.
+            </summary>
+        </member>
+        <member name="M:ScottPlot.Draw.InitData">
+            <summary>
+            create a clean-slate data bitmap
+            </summary>
+        </member>
+        <member name="M:ScottPlot.Draw.Grid">
+            <summary>
+            paint a grid on the data canvas
+            </summary>
+        </member>
+        <member name="M:ScottPlot.Draw.ColorCode(System.String)">
+            <summary>
+            given a string colorcode, reutrn that actual color
+            </summary>
+        </member>
+        <member name="T:ScottPlot.Figure">
+            <summary>
+            Create a Figure (everything starts here)
+            </summary>
+        </member>
+        <member name="M:ScottPlot.Figure.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Create a new ScottPlot figure.
+            </summary>
+        </member>
+        <member name="M:ScottPlot.Figure.Resize(System.Int32,System.Int32)">
+            <summary>
+            Resize the ScottPlot Figure.
+            </summary>
+        </member>
+        <member name="M:ScottPlot.Figure.Render">
+            <summary>
+            Return the rendered bitmap (axis + data)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ScottPlot.Figure.SaveFig(System.String)">
+            <summary>
+            write the current figure bitmap to a file
+            </summary>
+        </member>
+        <member name="M:ScottPlot.Figure.AxisAuto(System.Double[],System.Double[],System.Double,System.Double)">
+            <summary>
+            given some data, automatically adjust the axis to accomodate all of it.
+            manually set axis before drawing anything (very important).
+            </summary>
+        </member>
+        <member name="M:ScottPlot.Figure.PlotLine(System.Double[],System.Double[],System.String,System.Int32,System.Boolean)">
+            <summary>
+            add a line ((X,Y) pairs connected by lines) to the canvas
+            </summary>
+        </member>
+        <member name="M:ScottPlot.Figure.Grid">
+            <summary>
+            draw a grid on the current data image
+            </summary>
+        </member>
+        <member name="M:ScottPlot.Figure.Clear">
+            <summary>
+            erase all graph marks but leave axis intact
+            </summary>
+        </member>
+        <member name="M:ScottPlot.Figure.Info">
+            <summary>
+            show information about the current figure
+            </summary>
+        </member>
+        <member name="T:ScottPlot.Generate">
+            <summary>
+            Tools to create data (usually arrays of doubles) from nothing
+            </summary>
+        </member>
+        <member name="M:ScottPlot.Generate.Sequence(System.Int32,System.Double,System.Double)">
+            <summary>
+            Create a sequence of evenly spaced numbers
+            </summary>
+        </member>
+        <member name="M:ScottPlot.Generate.Salt(System.Double[],System.Double)">
+            <summary>
+            Add some salt (randomness) to an array.
+            </summary>
+        </member>
+        <member name="M:ScottPlot.Generate.Random(System.Int32,System.Double,System.Double)">
+            <summary>
+            Create a sequence of random numbers (from 0 to "scale")
+            </summary>
+        </member>
+        <member name="M:ScottPlot.Generate.Sine(System.Int32,System.Double,System.Double,System.Double)">
+            <summary>
+            Create a sine wave
+            </summary>
+        </member>
+        <member name="T:ScottPlot.Misc">
+            <summary>
+            Miscellaneous standalone functions
+            </summary>
+        </member>
+        <member name="M:ScottPlot.Misc.ArrayShow(System.Double[],System.Int32)">
+            <summary>
+            write the start and finish of an array to the console
+            </summary>
+            <param name="data"></param>
+            <param name="numberToShow"></param>
+        </member>
+        <member name="F:ScottPlot.ScottPlotUC.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ScottPlot.ScottPlotUC.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ScottPlot.ScottPlotUC.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:ScottPlot.ucInteractive.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ScottPlot.ucInteractive.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ScottPlot.ucInteractive.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+    </members>
+</doc>
