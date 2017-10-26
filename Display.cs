@@ -12,9 +12,22 @@ namespace UDPOscilloscope
 {
     public partial class Display : Form
     {
-        public Display()
+        private readonly Timer t = new Timer { Interval = 1 };
+        private Action act;
+
+
+        public Display(Action ontick)
         {
             InitializeComponent();
+
+            act = ontick;
+            Load += Display_Load;
+        }
+
+        private void Display_Load(object sender, EventArgs e)
+        {
+            t.Tick += (s, a) => Invoke(new MethodInvoker(act));
+            t.Start();
         }
     }
 }
