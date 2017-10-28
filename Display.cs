@@ -12,7 +12,7 @@ namespace UDPOscilloscope
 {
     public partial class Display : Form
     {
-        private readonly Timer t = new Timer { Interval = 1 };
+        private readonly Timer t = new Timer { Interval = 20 };
         private Action act;
 
 
